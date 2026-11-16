@@ -6,36 +6,35 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="script.js" defer></script>
+    <script src="https://kit.fontawesome.com/c6dd273231.js" crossorigin="anonymous"></script>
     <title>TODO list</title>
 </head>
 
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <div class="special-card d-flex flex-row justify-content-between">
-                    <div class="color-container1">
-                        <p class="text-secondary">color yellow</p>
-                    </div>
-                    <div class="color-container2">
-                        <p class="text-secondary">color red</p>
-                    </div>
-                    <div class="color-container3">
-                        <p class="text-secondary">color blue</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <div class="container">
         <div class="row">
-            <div class="col-12 text-center" id="container1">
-                <h1 id="main-head" class="main-head">Main Heading</h1>
-                <button onclick="headchange()" class="btn btn-primary">heading change</button> <br><br>
-                <button onclick="changepara()" class="btn btn-success" id="parabutton">add text</button>
+            <div class="col-12 d-flex flex-column">
+                <h1 class="todo-head">TODO LIST</h1> <hr>
+                <h2 class="todo-head create-task-head">Create Task</h2>
+                <input type="text" id="inputbox" class="ipbox" placeholder="add item..." />     
+                <button class="btn btn-success add-button" onclick="addToList()">ADD</button>
+
+                <h2 class="todo-head create-task-head">MY Tasks</h2>
+                <ul class="main-list" id="check-list">
+                    <li class="list-item">
+                        <div class="todo-item d-flex flex-row">
+                            <input type="checkbox" class="check" id="live-check">
+                            <div class="check-container d-flex flex-row justify-content-between">
+                                <label for="live-check">Live</label>
+                                <a onclick="deleteitem()"><i class="fa-solid fa-trash pt-2"></i></a>
+                            </div> 
+                        </div>
+                    </li>
+                </ul>
+
             </div>
         </div>
     </div>
