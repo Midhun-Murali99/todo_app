@@ -61,3 +61,7 @@ a:hover {
     border-top: none;
     border-bottom: none;
 }
+
+.checked{
+    text-decoration: line-through;
+}

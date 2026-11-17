@@ -1,42 +1,43 @@
 let countlive = 0;
 let idno = 1;
+let listcontainer = document.getElementById("check-list");
 
-function deleteitem(){
-    if (countlive == 0){
-        let paraitem = document.createElement("p");
-        paraitem.textContent = "cant do that";
-        let contitem = document.getElementById("check-list");
-        contitem.append(paraitem);
-        countlive = 1;
-    }
-    
+function deleteitem(listitem){
+    listcontainer.removeChild(listitem);
 }
 
-let listcontainer = document.getElementById("check-list");
+let inputboxElement = document.getElementById("inputbox");
+inputboxElement.addEventListener("keydown",function(e)  {
+    if(e.key === "Enter"){
+        addToList(inputboxElement.textContent);
+        inputboxElement.value = ""
+    }
+});
 
 function addToList(){
     idno += 1;
-    let textContent = document.getElementById("inputbox").value ;
-    if (textContent == "" || textContent == null){
-        console.log("enter something");
+    let inputtext = document.getElementById("inputbox").value ;
+    if (inputtext == "" || inputtext == null){
+        alert("enter something")
+        return
     }
     else{
         console.log("entered correctly");
         let listitem = document.createElement("li");
         listitem.classList.add("list-item" ,"mt-2");
-        listitem.setAttribute("id",textContent);
+        listitem.setAttribute("id",inputtext);
         let itemcontainer = document.createElement("div");
         itemcontainer.classList.add("todo-item", "d-flex", "flex-row");
 
         let inputcontainer = document.createElement("input");
         inputcontainer.setAttribute("type","checkbox");
         inputcontainer.setAttribute("id",idno);
-        inputcontainer.classList.add("check");
+        inputcontainer.classList.add("check",);
         
         let checkcontainer = document.createElement("div");
         checkcontainer.classList.add("check-container", "d-flex", "flex-row", "justify-content-between");
         let labelcontainer = document.createElement("label");
-        labelcontainer.textContent = textContent;
+        labelcontainer.textContent = inputtext;
         labelcontainer.setAttribute("for",idno);
 
         let trashcontainer = document.createElement("a");
@@ -52,6 +53,16 @@ function addToList(){
 
         listitem.appendChild(itemcontainer);
         listcontainer.appendChild(listitem);
+
+        inputcontainer.onclick = function(){
+            labelcontainer.classList.toggle("checked");
+        }
+
+        trashcontainer.onclick = function(){
+            console.log(inputtext);
+            deleteitem(listitem)
+        }
+        inputboxElement.value = "";
 
     }
 }
